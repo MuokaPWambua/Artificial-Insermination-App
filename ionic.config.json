@@ -1,0 +1,7 @@
+{
+  "name": "capvet",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "react"
+}
