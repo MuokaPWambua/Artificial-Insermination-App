@@ -1,0 +1,35 @@
+version: "3"
+services:
+    database:
+      image: postgres
+      environment:
+          POSTGRES_PASSWORD: v7d7d5
+      volumes:
+          - ./database/data:/var/lib/postgresql/data
+      ports:
+          - 5432:5432
+
+    server:
+      build: ./server
+      container_name: server
+      restart: always
+      depends_on:
+          - database
+      volumes:
+          - ./server/media:/app/media
+      expose:
+          - 8080
+      env_file:
+          - ./server/.env
+
+    capvet:
+      build: ./
+      container_name: capvet
+      restart: always
+      ports:
+          - "80:80"
+          - "443:443"
+      depends_on:
+          - server
+      volumes:
+          - .:/app

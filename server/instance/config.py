@@ -1,0 +1,8 @@
+from decouple import config
+
+
+SQLALCHEMY_DATABASE_URI = config("DATABASE_URL")
+SQLALCHEMY_TRACK_MODIFICATIONS = False
+MAX_CONTENT_LENGTH = 120 * 1024 * 1024
+SECRET_KEY = config('KEY')
+
