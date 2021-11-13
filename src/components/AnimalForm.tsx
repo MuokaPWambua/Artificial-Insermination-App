@@ -10,7 +10,7 @@ const inputStyle={
 
 const AnimalForm = ()=>{
     const {breedContext, pcodeContext, earContext, bornContext, bullContext,
-        sireContext, calvingContext, nameContext} = React.useContext(Context),
+        sireContext, calvingContext, nameContext, priceContext} = React.useContext(Context),
     setBreed = breedContext,
     setPcode =  pcodeContext,
     setEarNo = earContext,
@@ -18,7 +18,8 @@ const AnimalForm = ()=>{
     setSire = sireContext,
     setCalving = calvingContext,
     setName = nameContext,
-    setBull = bullContext;
+    setBull = bullContext,
+    setPrice = priceContext;
 
     return(
         <IonGrid>
@@ -33,23 +34,30 @@ const AnimalForm = ()=>{
                 <IonCol>
                     <IonInput type='text' placeholder='Name' onIonChange={(e:any)=>setName(e.target.value)}/>
                 </IonCol>
-               <IonCol>
-                    <IonInput type='text' placeholder='Sire' onIonChange={(e:any)=>setSire(e.target.value)}/>
-                </IonCol>
             </IonRow>
             <IonRow style={{display:'flex', flexDirection:'row', justifyContent:'center', alignItems:'center'}}>
                 <IonCol>
+                    <IonInput type='text' placeholder='Sire' onIonChange={(e:any)=>setSire(e.target.value)}/>
+                </IonCol>
+               <IonCol>
                     <IonDatetime placeholder='Born' displayFormat="MM DD YY" onIonChange={(e:any)=>setBorn(e.target.value)}/>
                 </IonCol>
                 <IonCol>
-                    <IonDatetime displayFormat="MM DD YY" placeholder='Calving Date' onIonChange={(e:any)=>setCalving(e.target.value)}/>
+                    <IonDatetime displayFormat="MM DD YY" placeholder='Calving'
+                    onIonChange={(e:any)=>setCalving(e.target.value)}/>
                 </IonCol>
+           </IonRow>
+            <IonRow>
                 <IonCol>
                     <IonInput placeholder='Bull' type='text' onIonChange={(e:any)=>setBull(e.target.value)}/>
                 </IonCol> 
                 <IonCol>
                     <IonInput placeholder='P.Code' type='text' onIonChange={(e:any)=>setPcode(e.target.value)}/>
                </IonCol> 
+                <IonCol>
+                    <IonInput placeholder='price' type='text' onIonChange={(e:any)=>setPrice(e.target.value)}/>
+               </IonCol> 
+
            </IonRow>
         </IonGrid>
 

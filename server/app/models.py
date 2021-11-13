@@ -15,23 +15,28 @@ class Insemination(db.Model):
     location = db.Column(db.Text,  nullable=False)
     breed = db.Column(db.Text,  nullable=False)
     sire = db.Column(db.Text,  nullable=False)
-    calving = db.Column(db.Text,  nullable=False)
+    calving = db.Column(db.DateTime,  nullable=False)
     pcode = db.Column(db.Text,  nullable=False)
     ear_no = db.Column(db.Text,  nullable=False)
-    price = db.Column(db.Text,  nullable=False)
+    price = db.Column(db.BigInteger,  nullable=False)
+    born =db.Column(db.DateTime)
+    bull = db.Column(db.Text)
     
-    def __init__(self, scheme, name, calving, ear_no, pcode, imp_sem,
-            contact, farm, owner, pts, location, breed, sire, hv):
-        self.scheme = scheme
-        self.name = name
-        self.imp_sem = imp_sem
-        self.farm = farm
-        self.sire = sire
-        self.owner = owner
-        self.contact = contact
-        self.hv = hv
-        self.pts = pts
-        self.location = location
-        self.price = price
-        self.pcode = pcode
-        self.ear_no = ear_no
+    def __init__(self, data):
+        self.scheme = data['scheme']
+        self.name = data['name']
+        self.imp_sem = data['imp_sem']
+        self.farm = data['farm']
+        self.sire = data['sire']
+        self.owner = data['owner']
+        self.contact = data['contact']
+        self.hv = data['hv']
+        self.pts = data['pts']
+        self.location = data['location']
+        self.price = data['price']
+        self.pcode = data['pcode']
+        self.born = data['born']
+        self.ear_no = data['ear_no']
+        self.bull = data['bull']
+        self.calving = data['calving']
+        self.breed = data['breed']

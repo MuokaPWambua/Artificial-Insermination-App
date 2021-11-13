@@ -7,19 +7,18 @@ def watch_dates():
     now = datetime.utcnow()
     heat = now + timedelta(days=18)
     calving = now + timedelta(days=283)
-    return 'next heat check' + ' ' + heat + ' ' + 'expected calving date' + ' ' +  calving
+    return 'next heat check' + ' ' + str(heat) + ' ' + 'expected calving date' + ' ' +  str(calving)
 
 
 def add_data():
     try:
-        data = request.get_json()
-
+        data = request.json
+        print(data)
         if data:
-            ai_details = Insemination(data['scheme'], data['name'], data['calving'], data['ear_no'], data['pcode'], 
-                    data['imp_sem'], data['contact'], data['farm'], data['owner'], data['pts'],
-                    data['location'], data['breed'], data['sire'], data['hv'])
+            ai_details = Insemination(data)
             db.session.add(ai_details)
             db.session.commit()
+            print(ai_details)
             return jsonify({'message': watch_dates()})
         return jsonify({'message': 'missing keys'})
     except Exception as e:
