@@ -4,7 +4,17 @@ import {Context} from './ExploreContainer'
 
 
 const Receipt=()=>{
-     const [setImpSem, setLocation, setPts, setOwner, setFarm, setScheme, setHv, setContact] = React.useContext(Context);
+     const {impContext, locationContext, ptsContext, ownerContext, 
+         farmContext, schemeContext, hvContext, contactContext} = React.useContext(Context),
+        setImpSem = impContext,
+        setLocation = locationContext,
+        setPts = ptsContext,
+        setOwner = ownerContext,
+        setFarm = farmContext,
+        setScheme = schemeContext,
+        setHv = hvContext,
+        setContact = contactContext;
+
      return(
         <IonGrid>
            <IonRow>

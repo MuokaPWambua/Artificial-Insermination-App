@@ -9,8 +9,17 @@ const inputStyle={
 
 
 const AnimalForm = ()=>{
-    const [setBreed, setPcode, setEarNo, setBorn,
-    setTime, setAiDate, setBull, setSire, setCalving, setName] = React.useContext(Context)
+    const {breedContext, pcodeContext, earContext, bornContext, bullContext,
+        sireContext, calvingContext, nameContext} = React.useContext(Context),
+    setBreed = breedContext,
+    setPcode =  pcodeContext,
+    setEarNo = earContext,
+    setBorn = bornContext,
+    setSire = sireContext,
+    setCalving = calvingContext,
+    setName = nameContext,
+    setBull = bullContext;
+
     return(
         <IonGrid>
             <IonRow>
@@ -35,18 +44,9 @@ const AnimalForm = ()=>{
                 <IonCol>
                     <IonDatetime displayFormat="MM DD YY" placeholder='Calving Date' onIonChange={(e:any)=>setCalving(e.target.value)}/>
                 </IonCol>
-           </IonRow>
-           <IonRow>
-               <IonCol>
+                <IonCol>
                     <IonInput placeholder='Bull' type='text' onIonChange={(e:any)=>setBull(e.target.value)}/>
-               </IonCol> 
-
-               <IonCol>
-                    <IonDatetime displayFormat="MM DD YY" placeholder='AI Date' onIonChange={(e:any)=>setAiDate(e.target.value)}/>
-               </IonCol>
-               <IonCol>
-                    <IonDatetime displayFormat="h:mm a" placeholder='AI Time' onIonChange={(e:any)=>setTime(e.target.value)}/>
-               </IonCol>
+                </IonCol> 
                 <IonCol>
                     <IonInput placeholder='P.Code' type='text' onIonChange={(e:any)=>setPcode(e.target.value)}/>
                </IonCol> 
