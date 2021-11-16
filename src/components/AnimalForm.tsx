@@ -1,11 +1,6 @@
 import React from 'react';
 import {IonCol, IonDatetime, IonRow, IonInput, IonGrid} from '@ionic/react';
 import {Context} from './ExploreContainer'
-const inputStyle={
-    display:'flex',
-    flexDirection:'row',
-    justifyContent: 'space-around'
-}
 
 
 const AnimalForm = ()=>{

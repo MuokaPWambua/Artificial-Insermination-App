@@ -7,7 +7,7 @@ import AnimalForm from './AnimalForm'
 interface ContainerProps { }
 
 export const Context: any = React.createContext([])
-const storage = window.localStorage
+
 const ExploreContainer: React.FC<ContainerProps> = () => {
      const [impSem, setImpSem]:any = React.useState(' ');
      const [price, setPrice]:any = React.useState('');

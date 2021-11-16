@@ -1,5 +1,5 @@
 import React from 'react'
-import {IonCol, IonRow, IonInput, IonButton, IonGrid} from  '@ionic/react'
+import {IonCol, IonRow, IonInput,IonGrid} from  '@ionic/react'
 import {Context} from './ExploreContainer'
 
 
