@@ -38,17 +38,26 @@ const ExploreContainer: React.FC<ContainerProps> = () => {
         [born, setBorn] = React.useState(''),
         [calving, setCalving] = React.useState(''),
         [bull, setBull] = React.useState(''),
-        [pCode, setPcode] = React.useState('');
+        [pCode, setPcode] = React.useState(''),
+        [load, setLoad] = React.useState(false);
 
 
      const send = ()=>{
+        setLoad(true) 
         fetch(url, {
                 method:"POST",
                 headers:{'Content-Type': 'application/json', 'Accept-Type':'application/json'},
                 body:JSON.stringify({farm:farm, owner:owner, breed:breed, location:location, price:price, 
                          imp_sem:impSem, hv:hv, scheme:scheme, contact:contact, pts:pts, born:born, 
                          calving:calving, bull:bull, pcode:pCode, ear_no:earNo, name:name, sire: sire })
-                }).then(r=>r.json()).then(r=>setMessage(r.message)).catch(e=>console.log(e.message))
+                }).then(r=>r.json()).then(r=>{
+                    setMessage(r.message)
+                    setLoad(false)
+                    }).catch(e=>{
+                        setLoad(false)
+                        console.log(e.message)
+                        })
+        setLoad(false)
      }
   return (
   <Context.Provider value={{pcodeContext:setPcode, breedContext:setBreed, earContext:setEarNo,
@@ -65,7 +74,9 @@ const ExploreContainer: React.FC<ContainerProps> = () => {
     {next?
     <IonButton onClick={()=>setNext(false)} style={{float:'right'}}> Next </IonButton>:
     <><IonButton onClick={()=>setNext(true)}>Back</IonButton>
-    <IonButton onClick={send} style={{float:'right'}}>Done</IonButton></>}
+    <IonButton onClick={send} style={{float:'right'}}>{
+        load?'sending...' : 'Done'
+    }</IonButton></>}
     <p style={{color:message === 'failed'? 'red':'green'}}>{message}</p>
     </div>
     <div style={{flexGrow:8}}>

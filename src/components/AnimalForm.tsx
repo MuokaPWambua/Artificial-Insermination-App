@@ -50,7 +50,7 @@ const AnimalForm = ()=>{
                     <IonInput placeholder='P.Code' type='text' onIonChange={(e:any)=>setPcode(e.target.value)}/>
                </IonCol> 
                 <IonCol>
-                    <IonInput placeholder='price' type='text' onIonChange={(e:any)=>setPrice(e.target.value)}/>
+                    <IonInput placeholder='price' type='number' onIonChange={(e:any)=>setPrice(e.target.value)}/>
                </IonCol> 
 
            </IonRow>

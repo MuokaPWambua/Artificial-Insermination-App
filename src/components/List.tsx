@@ -37,8 +37,8 @@ const List: React.FC = () =>{
         <IonList> 
         <IonItem style={{display:'flex', flexDirection:'raw',}}>
             <IonLabel>{ai.name}</IonLabel>
-            <IonButton color='warning'>
-                <IonIcon icon={call} onClick={()=>window.open(`tel:${'+'.concat(ai.contact)}`)}/>
+            <IonButton color='warning' onClick={()=>window.open(`tel:${'+'.concat(ai.contact)}`)}>
+                <IonIcon icon={call} />
             </IonButton>
             <IonButton color='success'>
                 <IonIcon icon={checkmark}/>
@@ -51,8 +51,8 @@ const List: React.FC = () =>{
     <IonList key={ai.id}>
       <IonItem style={{display:'flex', flexDirection:'raw',}}>
         <IonLabel>{ai.name}</IonLabel>
-        <IonButton color='warning'>
-            <IonIcon icon={call} onClick={()=>window.open(`tel:${'+'.concat(ai.contact)}`)}/>
+        <IonButton color='warning' onClick={()=>window.open(`tel:${'+'.concat(ai.contact)}`)}>
+            <IonIcon icon={call}/>
         </IonButton>
         <IonButton color='success'>
             <IonIcon icon={checkmark}/>
