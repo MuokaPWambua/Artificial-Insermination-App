@@ -2,6 +2,7 @@ from .models import *
 from . import db
 from flask import request, jsonify
 from datetime import datetime, timedelta
+from sqlalchemy import func
 
 def watch_dates():
     now = datetime.utcnow()
@@ -13,7 +14,7 @@ def ai_list(results, more):
     if results:
         return jsonify({'data': [{'scheme': s.scheme, 'name': s.name,
             'calving': s.calving, 'ear_no': s.ear_no, 'pcode': s.pcode, 'imp_sem':s.imp_sem,
-            'contact':s.contact, 'farm': s.farm, 'owner':s.owner, 'pts':s.pts,
+            'contact':s.contact, 'farm': s.farm, 'owner':s.owner, 'pts':s.pts, 'id':s.id,
             'location':s.location, 'breed':s.breed, 'sire':s.sire, 'hv':s.hv} for s in results],
             'more':more
             })
@@ -123,4 +124,31 @@ def update_data(ai_id):
     except Exception as e:
         print(f'failed to update {str(e)}')
         return jsonify({'message': 'failed to update'})
+
+def get_amount():
+    try:
+        amount = Insemination.query.with_entities(func.sum(Insemination.price).label('total')).first().total
+        return jsonify({'amount': amount})
+    except Exception as e:
+        print(e)
+        return jsonify({'message': 'NULL'})
+
+
+def get_heat():
+    page = int(request.args.get('page', 0)) * 10
+    next_page = page + 1
+    more = False
+
+    try:
+        heat = Insemination.query.filter_by(date=datetime.utcnow()).limit(30)
+        h = heat.offset(page).all()
+        more = True if len(heat.offset(next_page).all()) else False
+
+        if heat:
+            return ai_list(heat, more)
+
+        return ai_list([], more)
+    except Exception as e:
+        print(e)
+        return ai_list([], more)
 

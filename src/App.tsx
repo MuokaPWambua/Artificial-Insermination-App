@@ -1,3 +1,4 @@
+import React from 'react';
 import { Redirect, Route } from 'react-router-dom';
 import { IonApp, IonRouterOutlet } from '@ionic/react';
 import { IonReactRouter } from '@ionic/react-router';
@@ -22,7 +23,16 @@ import '@ionic/react/css/display.css';
 /* Theme variables */
 import './theme/variables.css';
 
-const App: React.FC = () => (
+export const url = 'http://localhost:5000/';
+export const AppContext:any = React.createContext({});
+
+const App: React.FC = () =>{
+    const [page, setPage] = React.useState(0);
+    const [query, setQuery] = React.useState(`${url}list`);
+    const [header, setHeader] = React.useState({});
+  return (
+ <AppContext.Provider value={{pageContext:[page, setPage],
+ queryContext:[query, setQuery], headerContext:[header, setHeader]}}>
   <IonApp>
     <IonReactRouter>
       <IonRouterOutlet>
@@ -35,6 +45,8 @@ const App: React.FC = () => (
       </IonRouterOutlet>
     </IonReactRouter>
   </IonApp>
-);
+</AppContext.Provider>
 
+)
+}
 export default App;

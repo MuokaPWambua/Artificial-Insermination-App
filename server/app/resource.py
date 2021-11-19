@@ -13,8 +13,11 @@ class AIResource(Resource):
         if (str(request.url_rule) == '/list/ai/<int:ai_id>') and ai_id:
             return get_single_data(ai_id)
 
+        if str(request.url_rule) == '/list/heat':
+            return get_heat()
+   
         if str(request.url_rule) == '/amount':
-            pass
+            return get_amount()
 
         return jsonify({'message': 'Check url'})
 
@@ -22,8 +25,10 @@ class AIResource(Resource):
         return add_data()
 
     def delete(self, ai_id):
-        return delete_data(ai_id)
+        if str(request.url_rule) == '/list/delete/<int:<ai_id>':
+            return delete_data(ai_id)
 
     def update(self, ai_id):
-        return update_data(ai_id)
+        if str(request.url_rule) == '/list/update/<int:<ai_id>': 
+            return update_data(ai_id)
 

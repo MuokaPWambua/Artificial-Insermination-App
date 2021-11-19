@@ -38,7 +38,7 @@ def create_app(test_config=None):
     api = Api(app, catch_all_404s=True)
     from .resource import AIResource
 
-    api.add_resource(AIResource, '/', '/list', '/list/heat',
+    api.add_resource(AIResource, '/', '/list', '/list/heat', '/list/birth',
             '/list/ai/<int:ai_id>', '/list/search/<search>', '/amount')
  
     try:
