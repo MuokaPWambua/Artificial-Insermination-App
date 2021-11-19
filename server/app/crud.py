@@ -8,7 +8,9 @@ def watch_dates():
     now = datetime.utcnow()
     heat = now + timedelta(days=18)
     calving = now + timedelta(days=283)
-    return 'next heat check' + ' ' + str(heat) + ' ' + 'expected calving date' + ' ' +  str(calving)
+    heat = datetime(heat.year, heat.month, heat.day).strftime("%b %d %Y")
+    calving = datetime(calving.year, calving.month, calving.day, calving.hour, calving.minute).strftime("%b %d %Y %H:%M")
+    return 'next heat check' + ' ' + heat + ' ' + 'expected calving date' + ' ' +  calving
 
 def ai_list(results, more):
     if results:
