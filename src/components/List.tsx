@@ -36,7 +36,8 @@ const List: React.FC = () =>{
      <div key={ai.id} ref={lastElement}>
         <IonList> 
         <IonItem style={{display:'flex', flexDirection:'raw',}}>
-            <IonLabel>{ai.name}</IonLabel>
+            <IonLabel>{ai.owner}</IonLabel>
+
             <IonButton color='warning' onClick={()=>window.open(`tel:${'+'.concat(ai.contact)}`)}>
                 <IonIcon icon={call} />
             </IonButton>
@@ -50,7 +51,7 @@ const List: React.FC = () =>{
     :
     <IonList key={ai.id}>
       <IonItem style={{display:'flex', flexDirection:'raw',}}>
-        <IonLabel>{ai.name}</IonLabel>
+        <IonLabel>{ai.owner}</IonLabel>
         <IonButton color='warning' onClick={()=>window.open(`tel:${'+'.concat(ai.contact)}`)}>
             <IonIcon icon={call}/>
         </IonButton>

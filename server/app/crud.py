@@ -8,9 +8,9 @@ def watch_dates():
     now = datetime.utcnow()
     heat = now + timedelta(days=18)
     calving = now + timedelta(days=283)
-    heat = datetime(heat.year, heat.month, heat.day).strftime("%b %d %Y")
-    calving = datetime(calving.year, calving.month, calving.day, calving.hour, calving.minute).strftime("%b %d %Y %H:%M")
-    return 'next heat check' + ' ' + heat + ' ' + 'expected calving date' + ' ' +  calving
+    heat_ = datetime(heat.year, heat.month, heat.day).strftime("%b %d %Y")
+    calving_ = datetime(calving.year, calving.month, calving.day, calving.hour, calving.minute).strftime("%b %d %Y %H:%M")
+    return [heat, calving, heat_, calving_] 
 
 def ai_list(results, more):
     if results:
@@ -30,15 +30,16 @@ def add_data():
         data = request.json
 
         if data:
+            data['expectancy'] = watch_dates()[1]
             ai_details = Insemination(data)
             db.session.add(ai_details)
             db.session.commit()
 
-            return jsonify({'message': watch_dates()})
-        return jsonify({'message': 'missing keys'})
+            return jsonify({'message': f'next heat cycle on: {watch_dates()[2]}'})
+        return jsonify({'message': 'missing input'})
     except Exception as e:
         print(f'Couldnt add insemination {str(e)}')
-        return jsonify({'message': 'failed'})
+        return jsonify({'message': 'failed please check your inputs'})
 
 
 def get_data():

@@ -21,6 +21,7 @@ class Insemination(db.Model):
     price = db.Column(db.BigInteger,  nullable=False)
     born =db.Column(db.DateTime)
     bull = db.Column(db.Text)
+    expectancy = db.Column(db.DateTime)
     
     def __init__(self, data):
         self.scheme = data['scheme']
@@ -40,3 +41,4 @@ class Insemination(db.Model):
         self.bull = data['bull']
         self.calving = data['calving']
         self.breed = data['breed']
+        self.expectancy = data['expectancy']

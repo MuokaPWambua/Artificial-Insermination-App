@@ -77,7 +77,7 @@ const ExploreContainer: React.FC<ContainerProps> = () => {
     <IonButton onClick={send} style={{float:'right'}}>{
         load?'sending...' : 'Done'
     }</IonButton></>}
-    <p style={{color:message === 'failed'? 'red':'green'}}>{message}</p>
+    <p style={{color:message.includes('failed')? 'red':'green'}}>{message}</p>
     </div>
     <div style={{flexGrow:8}}>
 
