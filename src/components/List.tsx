@@ -32,7 +32,7 @@ const List: React.FC = () =>{
   <IonContent>
 
     {data? data.map((ai:any, i:any)=>(
-     (data.length == i+1)?    
+     (data.length === i+1)?    
      <div key={ai.id} ref={lastElement}>
         <IonList> 
         <IonItem style={{display:'flex', flexDirection:'raw',}}>

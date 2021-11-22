@@ -1,7 +1,7 @@
 import React from 'react';
 import './ExploreContainer.css';
 import Receipt from './Receipt';
-import {IonButton, IonIcon} from '@ionic/react'
+import {IonButton} from '@ionic/react'
 import AnimalForm from './AnimalForm'
 import List from './List';
 import {url} from '../App';
@@ -57,7 +57,7 @@ const ExploreContainer: React.FC<ContainerProps> = () => {
                         setLoad(false)
                         console.log(e.message)
                         })
-        setLoad(false)
+       
      }
   return (
   <Context.Provider value={{pcodeContext:setPcode, breedContext:setBreed, earContext:setEarNo,

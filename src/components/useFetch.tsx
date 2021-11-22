@@ -33,7 +33,7 @@ const useFetch = (url:any, page=0, header={}) =>{
 		setError(true);
 		setMessage(false);
 		return e;
-	},[error]);
+	},[]);
 
     React.useEffect(()=>{
         setLoading(true);
@@ -53,7 +53,7 @@ const useFetch = (url:any, page=0, header={}) =>{
 					.then(res =>response(res))
 					.catch( error =>catchResponseError(error));
         }
-   },[url, page, header, catchResponseError])
+   },[url, page, header, catchResponseError, setPage])
 
     return {data, loading, error, hasMore, message};
 }

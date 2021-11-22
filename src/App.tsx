@@ -23,7 +23,7 @@ import '@ionic/react/css/display.css';
 /* Theme variables */
 import './theme/variables.css';
 
-export const url = 'http://localhost:5000/';
+export const url = 'http://3.22.221.251:5000/';
 export const AppContext:any = React.createContext({});
 
 const App: React.FC = () =>{
@@ -36,12 +36,14 @@ const App: React.FC = () =>{
   <IonApp>
     <IonReactRouter>
       <IonRouterOutlet>
-        <Route exact path="/home">
+        <Route exact path="/">
           <Home />
         </Route>
+	{/*
         <Route exact path="/">
           <Redirect to="/home" />
         </Route>
+	*/}
       </IonRouterOutlet>
     </IonReactRouter>
   </IonApp>

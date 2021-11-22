@@ -17,45 +17,46 @@ const AnimalForm = ()=>{
     setPrice = priceContext;
 
     return(
+	<form>
         <IonGrid>
             <IonRow>
                 <IonCol>
-                    <IonInput type='text' placeholder='Breed' onIonChange={(e:any)=>setBreed(e.target.value)}/>
+                    <IonInput type='text' placeholder='Breed' onIonChange={(e:any)=>setBreed(e.target.value)} required/>
                 </IonCol>
 
                 <IonCol>
-                    <IonInput type='number' placeholder='Ear No.' onIonChange={(e:any)=>setEarNo(e.target.value)}/>
+                    <IonInput type='number' placeholder='Ear No.' onIonChange={(e:any)=>setEarNo(e.target.value)} required/>
                 </IonCol>
                 <IonCol>
-                    <IonInput type='text' placeholder='Name' onIonChange={(e:any)=>setName(e.target.value)}/>
+                    <IonInput type='text' placeholder='Name' onIonChange={(e:any)=>setName(e.target.value)} required/>
                 </IonCol>
             </IonRow>
             <IonRow style={{display:'flex', flexDirection:'row', justifyContent:'center', alignItems:'center'}}>
                 <IonCol>
-                    <IonInput type='text' placeholder='Sire' onIonChange={(e:any)=>setSire(e.target.value)}/>
+                    <IonInput type='text' placeholder='Sire' onIonChange={(e:any)=>setSire(e.target.value)} required/>
                 </IonCol>
                <IonCol>
-                    <IonDatetime placeholder='Born' displayFormat="MM DD YY" onIonChange={(e:any)=>setBorn(e.target.value)}/>
+                    <IonDatetime placeholder='Born' displayFormat="MM DD YY" required onIonChange={(e:any)=>setBorn(e.target.value)}/>
                 </IonCol>
                 <IonCol>
-                    <IonDatetime displayFormat="MM DD YY" placeholder='Calving'
+                    <IonDatetime displayFormat="MM DD YY" placeholder='Calving' required
                     onIonChange={(e:any)=>setCalving(e.target.value)}/>
                 </IonCol>
            </IonRow>
             <IonRow>
                 <IonCol>
-                    <IonInput placeholder='Bull' type='text' onIonChange={(e:any)=>setBull(e.target.value)}/>
+                    <IonInput placeholder='Bull' type='text' onIonChange={(e:any)=>setBull(e.target.value)} required/>
                 </IonCol> 
                 <IonCol>
-                    <IonInput placeholder='P.Code' type='text' onIonChange={(e:any)=>setPcode(e.target.value)}/>
+                    <IonInput placeholder='P.Code' type='text' onIonChange={(e:any)=>setPcode(e.target.value)} required/>
                </IonCol> 
                 <IonCol>
-                    <IonInput placeholder='price' type='number' onIonChange={(e:any)=>setPrice(e.target.value)}/>
+                    <IonInput placeholder='price' type='number' onIonChange={(e:any)=>setPrice(e.target.value)} required/>
                </IonCol> 
 
            </IonRow>
         </IonGrid>
-
+	</form>
     )
 }
 export default AnimalForm;
